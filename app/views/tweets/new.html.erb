@@ -50,7 +50,7 @@
           都道府県
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:area1_id, Area1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           地域
           <span class="indispensable">必須</span>
@@ -94,7 +94,7 @@
         <div class="weight-bold-text">
         混雑状況
         </div>
-        <%= f.collection_select(:crowd1_id, Crowd1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:crowd_id, Crowd.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           コロナ対策 
         </div>
@@ -158,8 +158,15 @@
       </div>
     </div>
     <%# /観光スポットの画像 %>
+   
+    <%# 観光日数%>  
+         <div class="weight-bold-text">
+          観光日数
          
-
+        </div>
+        <%= f.collection_select(:day_id, Day.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    <%# /観光日数%>  
+      
        <%# 観光スポットの場所%>  
  <div class="hotel-detail">
       <div class="weight-bold-text">旅行の詳細</div>
@@ -168,7 +175,7 @@
           都道府県
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:area1_id, Area2.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           地域
           <span class="indispensable">必須</span>
@@ -212,7 +219,7 @@
         <div class="weight-bold-text">
         混雑状況
         </div>
-        <%= f.collection_select(:crowd1_id, Crowd1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:crowd_id, Crowd.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           コロナ対策 
         </div>

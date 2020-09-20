@@ -1,4 +1,4 @@
-class Crowd1 < ActiveHash::Base
+class Crowd < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: '空いている' },
