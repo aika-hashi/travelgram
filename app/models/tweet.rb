@@ -12,7 +12,7 @@ class Tweet < ApplicationRecord
   belongs_to_active_hash :crowd2
   belongs_to_active_hash :day
 
-  validates :title,  presence: true
+  validates :title1,:title2, :local1,:local2, presence: true
   validates :area_id,:day_id,numericality: { other_than: 1 } 
 
   

@@ -3,12 +3,14 @@
     <%= link_to image_tag('plane2-logo.png' , size: '185x50'), "/" %>
 
   </header>
+
+<%# 宿の情報 %>
   <div class="items-sell-main">
-    <h2 class="items-sell-title">旅行情報を入力</h2>
+    <h2 class="items-sell-title">宿泊施設</h2>
     <%= form_with  model: @tweet,local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     
@@ -18,11 +20,11 @@
         タイトル
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :title1, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
       <%# /旅行タイトル %>
 
       
- <%# 宿の詳細%>
+  <%# 宿の詳細%>
      
       <%# 宿の画像 %>
     <div class="img-upload">
@@ -42,7 +44,7 @@
 
        <%# 宿の場所%>  
  <div class="hotel-detail">
-      <div class="weight-bold-text">旅行の詳細</div>
+      <div class="weight-bold-text">宿の詳細</div>
       <div class="form">
         <div class="weight-bold-text">
           都道府県
@@ -50,7 +52,7 @@
         </div>
         <%= f.collection_select(:area1_id, Area1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
-          商品の状態
+          地域
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :local, class:"hotel-area", id:"item-name", placeholder:"地域（必須 40文字まで)", maxlength:"40" %>
@@ -59,7 +61,48 @@
    <%# /宿の場所%>  
      
      <%# 宿の料金%>  
+     <div class="sell-price">
+      <div class="weight-bold-text question-text">
+        <span>宿の料金</span>
+        <a class="question" href="#">?</a>
+      </div>
+      <div>
+        <div class="price-content">
+          <div class="price-text">
+            <span>料金</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）5000" %>
+        </div>
+      </div>
+    </div>
+    <div class="weight-bold-text">
+          どのくらい得したか(Go Toトラベルなどによりどのくらい安くなったか)
+          <span class="indispensable">必須</span>
+        </div>
+        <span class="sell-yen">¥</span>
+        <%= f.text_area :discount, class:"hotel-area", id:"item-name", placeholder:"例）5000", maxlength:"40" %>
+        <span class="sell-yen">の得をした</span>
      <%# 宿の料金%>  
+
+
+      <%# コロナ対策 %>  
+ <div class="corona-detail">
+      <div class="weight-bold-text">コロナ対策</div>
+      <div class="form">
+        <div class="weight-bold-text">
+        混雑状況
+        </div>
+        <%= f.collection_select(:crowd1_id, Crowd1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          コロナ対策 
+        </div>
+        <%= f.text_area :corona_mesure1, class:"hotel-area", id:"item-name", placeholder:" 宿でなされていたコロナ対策について（必須 40文字まで)", maxlength:"40" %>
+      </div>
+    </div>
+   <%# /コロナ対策 %>  
+     
 
       <%# 宿の説明 %>
       <div class="items-explain">
@@ -67,88 +110,161 @@
           キャプション記入
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hotel_text, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :hotel_text, class:"items-text", id:"item-info", placeholder:"宿の説明 自由（必須 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <%# /宿の説明 %>
+  <%# /宿の情報 %>
     
-    <%# 商品の詳細 %>
-    <div class="items-detail">
+
+
+
+
+
+
+<%# 観光の情報 %>
+    <div class="items-sell-main">
+    <h2 class="items-sell-title">観光スポット</h2>
+    <%# <%= form_with  model: @tweet,local: true do |f| %> 
+
+    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%# <%= render 'shared/error_messages', model: f.object %> 
+    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+
+    
+    <%# 旅行タイトル %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        タイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title2, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <%# /旅行タイトル %>
+
+      
+ <%# 観光の詳細%>
+     
+      <%# 観光スポットの画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /観光スポットの画像 %>
+         
+
+       <%# 観光スポットの場所%>  
+ <div class="hotel-detail">
       <div class="weight-bold-text">旅行の詳細</div>
       <div class="form">
         <div class="weight-bold-text">
-          カテゴリー
+          都道府県
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:area1_id, Area2.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
-          商品の状態
+          地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.text_area :local, class:"hotel-area", id:"item-name", placeholder:"地域（必須 40文字まで)", maxlength:"40" %>
       </div>
     </div>
-    <%# /商品の詳細 %>
-
-    <%# 配送について %>
-    <div class="items-detail">
+   <%# /観光スポットの場所%>  
+     
+     <%# 観光スポットの料金%>  
+     <div class="sell-price">
       <div class="weight-bold-text question-text">
-        <span>配送について</span>
-        <a class="question" href="#">?</a>
-      </div>
-      <div class="form">
-        <div class="weight-bold-text">
-          配送料の負担
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
-        <div class="weight-bold-text">
-          発送元の地域
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-prefecture"}) %>
-        <div class="weight-bold-text">
-          発送までの日数
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
-      </div>
-    </div>
-    <%# /配送について %>
-
-    <%# 販売価格 %>
-    <div class="sell-price">
-      <div class="weight-bold-text question-text">
-        <span>販売価格<br>(¥300〜9,999,999)</span>
+        <span>宿の料金</span>
         <a class="question" href="#">?</a>
       </div>
       <div>
         <div class="price-content">
           <div class="price-text">
-            <span>価格</span>
-            <span class="indispensable">必須</span>
+            <span>料金</span>
+           
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）5000" %>
         </div>
-        <div class="price-content">
-          <span>販売手数料 (10%)</span>
-          <span>
-            <span id='add-tax-price'></span>円
-          </span>
-        </div>
-        <div class="price-content">
-          <span>販売利益</span>
-          <span>
-            <span id='profit'></span>円
-        </div>
-        </span>
       </div>
     </div>
-    <%# /販売価格 %>
+    <div class="weight-bold-text">
+          どのくらい得したか(Go Toトラベルなどによりどのくらい安くなったか)
+          
+        </div>
+        <span class="sell-yen">¥</span>
+        <%= f.text_area :discount, class:"hotel-area", id:"item-name", placeholder:"例）5000", maxlength:"40" %>
+        <span class="sell-yen">の得をした</span>
+     <%# 観光スポットの料金%>  
 
+
+      <%# コロナ対策 %>  
+ <div class="corona-detail">
+      <div class="weight-bold-text">コロナ対策</div>
+      <div class="form">
+        <div class="weight-bold-text">
+        混雑状況
+        </div>
+        <%= f.collection_select(:crowd1_id, Crowd1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          コロナ対策 
+        </div>
+        <%= f.text_area :corona_mesure1, class:"hotel-area", id:"item-name", placeholder:" 宿でなされていたコロナ対策について（必須 40文字まで)", maxlength:"40" %>
+      </div>
+    </div>
+
+   <%# /コロナ対策 %>  
+   <%# 移動情報%>
+   <div class="traffc-detail">
+      <div class="weight-bold-text">コロナ対策</div>
+      <div class="form">
+        <div class="weight-bold-text">
+        移動手段と時間
+        </div>
+       <%= f.text_area :traffic, class:"hotel-area", id:"item-name", placeholder:"移動について自由記載 例）・新幹線:東京駅〜大阪駅(〇〇時間)・徒歩:大阪駅〜目的地〇〇に到着(〇〇分)。", maxlength:"40" %>
+        <div class="weight-bold-text">
+
+        </div>
+       <div class="price-content">
+          <div class="price-text">
+            <span>料金</span>
+          </div>
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :fare, class:"price-input", id:"item-price", placeholder:"例）2000" %>
+        </div>
+      </div>
+    </div>
+
+    
+    <%# /移動情報%>
+    <%# /観光の詳細%>
+     
+
+      <%# 観光スポットの説明 %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          キャプション記入
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :hotel_text, class:"items-text", id:"item-info", placeholder:"宿の説明 自由（必須 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /観光スポットの説明 %>
+
+
+    
+ <%# /観光の情報 %>   
+    
+   
     <%# 注意書き %>
-    <div class="caution">
+    <%# <div class="caution">
       <p class="sentence">
         <a href="#">禁止されている出品、</a>
         <a href="#">行為</a>
@@ -164,11 +280,12 @@
         <a href="#">加盟店規約</a>
         に同意したことになります。
       </p>
-    </div>
+    </div> %>
     <%# /注意書き %>
+   
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
+      <%= f.submit "投稿する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
@@ -176,14 +293,14 @@
   <% end %>
 
   <footer class="items-sell-footer">
-    <ul class="menu">
+    <%# <ul class="menu">
       <li><a href="#">プライバシーポリシー</a></li>
       <li><a href="#">フリマ利用規約</a></li>
       <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    </ul> %>
+    <%= link_to image_tag('plane2-logo.png' , size: '185x50'), "/" %>
     <p class="inc">
-      ©︎Furima,Inc.
+      ©︎Travelgram,Inc.
     </p>
   </footer>
 </div>

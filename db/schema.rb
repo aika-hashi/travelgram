@@ -43,15 +43,16 @@ ActiveRecord::Schema.define(version: 2020_09_20_055203) do
     t.integer "crowd1_id", null: false
     t.integer "crowd2_id", null: false
     t.integer "agency_id", null: false
-    t.string "title", null: false
+    t.string "title1", null: false
+    t.string "title2", null: false
     t.text "hotel_text", null: false
     t.text "spot_text", null: false
     t.text "corona_measure1", null: false
     t.text "corona_measure2", null: false
     t.text "traffic", null: false
     t.string "fare", null: false
-    t.string "ride_time", null: false
-    t.string "local", null: false
+    t.string "local1", null: false
+    t.string "local2", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
