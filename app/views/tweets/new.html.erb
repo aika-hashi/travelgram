@@ -1,50 +1,80 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <%= link_to image_tag('plane2-logo.png' , size: '185x50'), "/" %>
 
   </header>
   <div class="items-sell-main">
-    <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <h2 class="items-sell-title">旅行情報を入力</h2>
+    <%= form_with  model: @tweet,local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%# render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
-    <%# 出品画像 %>
+    
+    <%# 旅行タイトル %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        タイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <%# /旅行タイトル %>
+
+      
+ <%# 宿の詳細%>
+     
+      <%# 宿の画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        出品画像
+        画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :hoge, id:"item-image" %>
+        <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /出品画像 %>
-    <%# 商品名と商品説明 %>
-    <div class="new-items">
-      <div class="weight-bold-text">
-        商品名
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="items-explain">
+    <%# /宿の画像 %>
+         
+
+       <%# 宿の場所%>  
+ <div class="hotel-detail">
+      <div class="weight-bold-text">旅行の詳細</div>
+      <div class="form">
         <div class="weight-bold-text">
-          商品の説明
+          都道府県
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.collection_select(:area1_id, Area1.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          商品の状態
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :local, class:"hotel-area", id:"item-name", placeholder:"地域（必須 40文字まで)", maxlength:"40" %>
       </div>
     </div>
-    <%# /商品名と商品説明 %>
+   <%# /宿の場所%>  
+     
+     <%# 宿の料金%>  
+     <%# 宿の料金%>  
 
+      <%# 宿の説明 %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          キャプション記入
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :hotel_text, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /宿の説明 %>
+    
     <%# 商品の詳細 %>
     <div class="items-detail">
-      <div class="weight-bold-text">商品の詳細</div>
+      <div class="weight-bold-text">旅行の詳細</div>
       <div class="form">
         <div class="weight-bold-text">
           カテゴリー

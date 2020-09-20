@@ -5,17 +5,22 @@ class CreateTweets < ActiveRecord::Migration[6.0]
       t.string :discount, null: false
       #t.references :user,null: false, foreign_key: true
       t.integer :age_id, null: false
-      t.integer :area_id, null: false
+      t.integer :area1_id, null: false
+      t.integer :area2_id, null: false
       t.integer :day_id, null: false
-      t.integer :crowd_id, null: false
+      t.integer :crowd1_id, null: false
+      t.integer :crowd2_id, null: false
       t.integer :agency_id, null: false
       t.string  :title, null: false
-      t.text  :text, null: false
-      t.text  :corona_measure, null: false
+      t.text  :hotel_text, null: false
+      t.text  :spot_text, null: false
+      t.text  :corona_measure1, null: false
+      t.text  :corona_measure2, null: false
       t.text  :traffic, null: false
       t.string  :fare, null: false
-
-
+      t.string  :ride_time, null: false
+      t.string  :local, null: false
+      t.references :user         , foreign_key: true   
 
       t.timestamps
     end

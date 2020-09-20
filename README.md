@@ -56,13 +56,19 @@ Things you may want to cover:
 | age_id         | integer    | null: false                    |
 | area_id        | integer    | null: false                    |
 | day_id         | integer    | null: false                    |
-| crowd_id       | integer    | null: false                    |
+| crowd1_id      | integer    | null: false                    |
+| crowd2_id      | integer    | null: false                    |
 | agency_id      | integer    | null: false                    |
 | title          | string     | null: false                    |
-| text           | text       | null: false                    |
-| corona_measure | text       | null: false                    |
+| hotel_text     | text       | null: false                    |
+| spot_text      | text       | null: false                    |
+| corona_measure1| text       | null: false                    |
+| corona_measure2| text       | null: false                    |
 | traffic        | text       | null: false                    |
 | fare           | string     | null: false                    |
+| ride_time      | string     | null: false                    |
+| local          | string     | null: false                    |
+| text           | text       | null: false                    |
 
 ### Association
 
