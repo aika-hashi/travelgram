@@ -56,30 +56,60 @@ Things you may want to cover:
 | age_id         | integer    | null: false                    |
 | area_id        | integer    | null: false                    |
 | day_id         | integer    | null: false                    |
-| crowd1_id      | integer    | null: false                    |
-| crowd2_id      | integer    | null: false                    |
+| crowd_id       | integer    | null: false                    |
 | agency_id      | integer    | null: false                    |
 | title          | string     | null: false                    |
 | hotel_text     | text       | null: false                    |
 | spot_text      | text       | null: false                    |
-| corona_measure1| text       | null: false                    |
-| corona_measure2| text       | null: false                    |
-| traffic        | text       | null: false                    |
-| fare           | string     | null: false                    |
-| ride_time      | string     | null: false                    |
+| corona_measure | text       | null: false                    |
 | local          | string     | null: false                    |
-| text           | text       | null: false                    |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- belongs_to_active_hash :age
+- belongs_to_active_hash :crowd
+- belongs_to_active_hash :area
+- belongs_to_active_hash :day
+- has_one_attached :image
+- has_one :trip
+
+## trips テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| price          | string     | null: false                    |
+| discount       | string     | null: false                    |
+| user           | references | null: false, foreign_key: true |
+| area_id        | integer    | null: false                    |
+| day_id         | integer    | null: false                    |
+| crowd_id       | integer    | null: false                    |
+| title          | string     | null: false                    |
+| spot_text      | text       | null: false                    |
+| corona_measure | text       | null: false                    |
+| traffic        | text       | null: false                    |
+| fare           | string     | null: false                    |
+| local          | string     | null: false                    |
+
+### Association
+
+- belongs_to :user
+- has_many :comments
 - belongs_to_active_hash :crowd
 - belongs_to_active_hash :area
 - belongs_to_active_hash :day
 - belongs_to_active_hash :agency
 - has_one_attached :image
+- belongs_to :tweet
+
+
+
+
+
+
+
+
+
 
 
 ## comments テーブル

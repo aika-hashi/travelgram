@@ -7,17 +7,11 @@ class CreateTweets < ActiveRecord::Migration[6.0]
       t.integer :area_id, null: false
       t.integer :day_id, null: false
       t.integer :crowd_id, null: false
-      t.integer :agency_id, null: false
-      t.string  :title1, null: false
-      t.string  :title2, null: false
+      t.string  :title, null: false
       t.text  :hotel_text, null: false
-      t.text  :spot_text, null: false
-      t.text  :corona_measure1, null: false
-      t.text  :corona_measure2, null: false
-      t.text  :traffic, null: false
-      t.string  :fare, null: false
-      t.string  :local1, null: false
-      t.string  :local2, null: false
+      t.text  :corona_measure, null: false
+      t.string  :local, null: false
+  
       t.references :user         , foreign_key: true   
 
       t.timestamps
