@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   def index
-    @trip = Trip.new
+    @tweets = Tweet.all.order("created_at DESC")
+    @trips = Trip.all.order("created_at DESC")
   end
 
   def new

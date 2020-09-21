@@ -63,90 +63,73 @@
   </div>
   <%# /FURIMAが選ばれる3つの理由部分 %>
 
-  <%# 画面中央の「会員数日本一位」帯部分 %>
-  <div class='ad-contents'>
-    <h2 class='ad-title'>
-      会員数日本一位
-    </h2>
-    <p class='ad-explain'>
-      FURIMAは、フリマアプリで最も人気。
-    </p>
-    <p class='ad-explain'>
-      出品・購入回数も業界最多です！
-    </p>
-    <p class='ad-explain'>
-      ほしかったあの商品に出会えるかもしれません。
-    </p>
-    <div class='store-btn'>
-      <%= link_to image_tag("jaran.png", class:"jalan-btn"), "https://www.jalan.net/" %>
-      <%= link_to image_tag("yahoo.png", class:"yahoo-btn"), "https://travel.yahoo.co.jp/" %>
-      <%= link_to image_tag("rurubu.png", class:"his-btn"), "https://www.rurubu.travel/?utm_medium=cpc&utm_source=google&utm_campaign=google_rurubu-htl_02-brandplus&utm_content=rurubutop__txt_rsa-1_&cid=1835687&gclid=CjwKCAjw-5v7BRAmEiwAJ3DpuLemL4PcnvfCuYZAL5oo2x4LsV0sh1xQAudTeK4fzejRd6v3Q4qc8hoCrHAQAvD_BwE" %>
-    </div>
-  </div>
-  <%# /画面中央の「会員数日本一位」帯部分 %>
-
-  <%# FURIMAの特徴 %>
-  <div class='feature-contents'>
-    <h2 class='title'>
-      FURIMAの特徴
-    </h2>
-    <ul class='feature-lists'>
-      <li class='list'>
-        <%= image_tag "furima-intro04.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          簡単に売り買いできる
-        </h3>
-        <p class='feature-list-description'>
-          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro05.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          売上金は即日振込みに対応
-        </h3>
-        <p class='feature-list-description'>
-          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします。
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro06.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          様々な支払いに対応
-        </h3>
-        <p class='feature-list-description'>
-          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-        </p>
-      </li>
-    </ul>
-  </div>
-  <%# /FURIMAの特徴 %>
-
-  <%# 商品一覧 %>
+  
+ 
+<%# 投稿一覧 %>
+  <%# 宿泊施設投稿一覧 %>
   <div class='item-contents'>
-    <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
-    <ul class='item-lists'>
-
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <li class='list'>
-        <%= link_to "#" do %>
-        <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
-
-        </div>
-        <div class='item-info'>
+    <h2 class='title'>旅行の投稿一覧</h2>
+     
+    
+   <ul class='item-lists'>
+      <% if @tweets[0] != nil  %>
+      <% @tweets.each do |tweet| %>
+    
+    <li class='list'>
+      <div class='item-info'>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= tweet.title %>
           </h3>
+           <div class='item-name'>
+            <%= tweet.area_id %>
+          </div>
+
+
+        <%# <%= link_to  tweet_path(tweet.id) do %> 
+        <div class='item-img-content'>
+          <%= image_tag tweet.image.variant(resize:'500x500'), class: 'item-img' if tweet.image.attached?  %>
+
+         </div>
+       
+        <div class='item-info'>
+          
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br>(税込み)</span>
+            <span><%= tweet.price %>円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+      </li>
+       <% end %>
+        <% end %>
+        <%# /宿泊施設投稿一覧 %>
+  <%# 観光スポット投稿一覧 %>
+
+      <% if @trips[0] != nil  %>
+      <% @trips.each do |trip| %>
+    <li class='list'>
+      
+      <div class='item-info'>
+          <h3 class='item-name'>
+            <%= trip.title %>
+          </h3>
+           <div class='item-name'>
+            <%= trip.area.name %>
+          </div>
+
+
+        <%# <%= link_to  trip_path(trip.id) do %> 
+        <div class='item-img-content'>
+          <%= image_tag trip.image.variant(resize:'500x500'), class: 'item-img' if trip.image.attached?%>
+
+         </div>
+       
+        <div class='item-info'>
+          
+          <div class='item-price'>
+            <span><%= trip.price %>円<br>(税込み)</span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -155,19 +138,23 @@
         </div>
         <% end %>
       </li>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+    
 
-      <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      <%# /観光スポット投稿一覧 %>
+      
+
+      <%# 投稿がない場合のダミー %>
+      <% else %>
+      
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
-            商品を出品してね！
+            旅行の情報を投稿！
           </h3>
           <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
+            <span>6000円</span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -176,12 +163,17 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# /商品がない場合のダミー %>
+     <% end %>
+      
+      <%# /投稿がない場合のダミー %>
     </ul>
+
   </div>
-  <%# /商品一覧 %>
-</div>
+  <%# /投稿一覧 %>
+
+
+
+
 <div class='purchase-btn'>
   <span class='purchase-btn-text'>投稿する</span>
   <a href="/trips/@trip.id">
