@@ -87,7 +87,7 @@
 
         <%# <%= link_to  tweet_path(tweet.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag tweet.image, class: "item-img" %>
+          <%= image_tag tweet.image.variant(resize:'500x500'), class: 'item-img' if tweet.image.attached?  %>
 
          </div>
        
@@ -122,7 +122,7 @@
 
         <%# <%= link_to  trip_path(trip.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag trip.image, class: "item-img" %>
+          <%= image_tag trip.image.variant(resize:'500x500'), class: 'item-img' if trip.image.attached?%>
 
          </div>
        
