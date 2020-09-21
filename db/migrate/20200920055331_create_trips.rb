@@ -1,6 +1,7 @@
 class CreateTrips < ActiveRecord::Migration[6.0]
   def change
     create_table :trips do |t|
+      t.string :image        , null: false ,default: ""
       t.string :price, null: false
       t.string :discount, null: false
       #t.references :user,null: false, foreign_key: true
