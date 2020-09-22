@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_055331) do
+ActiveRecord::Schema.define(version: 2020_09_20_055332) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_055331) do
   end
 
   create_table "trips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", default: "", null: false
+    t.string "images", default: "", null: false
     t.string "price", null: false
     t.string "discount", null: false
     t.integer "area_id", null: false
@@ -47,15 +47,14 @@ ActiveRecord::Schema.define(version: 2020_09_20_055331) do
     t.string "fare", null: false
     t.string "local", null: false
     t.bigint "user_id"
-    t.bigint "tweet_id"
+    t.string "video"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tweet_id"], name: "index_trips_on_tweet_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", default: "", null: false
+    t.string "images", default: "", null: false
     t.string "price", null: false
     t.string "discount", null: false
     t.integer "area_id", null: false
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_055331) do
     t.text "hotel_text", null: false
     t.text "corona_measure", null: false
     t.string "local", null: false
+    t.string "video"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_09_20_055331) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "trips", "tweets"
   add_foreign_key "trips", "users"
   add_foreign_key "tweets", "users"
 end

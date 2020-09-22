@@ -24,18 +24,18 @@
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
-      FURIMAが選ばれる3つの理由
+      TRAVELGRAMが選ばれる3つの理由
     </h2>
     <ul class='reason-lists'>
       <li class='list'>
         <%= image_tag "furima-intro01.png", class:"list-pict" %>
         <span class='reason-list-number'>1</span>
         <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>3分</span>
-          ですぐに出品
+          <span class='reason-list-blue-text'>Go To トラベル</span>
+          によるお得な情報を知ることができる
         </h3>
         <p class='reason-list-description'>
-          スマホで入力するだけで簡単に出品できる！
+          実際に観光した人の生の声が聞ける
         </p>
       </li>
       <li class='list'>
@@ -46,7 +46,7 @@
           で使いやすい
         </h3>
         <p class='reason-list-description'>
-          めんどくさい入力は必要なく、検索も購入もスムーズ！
+          めんどくさい入力は必要なく、検索も投稿もスムーズ！
         </p>
       </li>
       <li class='list'>
@@ -88,9 +88,16 @@
 
         <%# <%= link_to  tweet_path(tweet.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag tweet.image ,class: 'item-img'   %>
-
+        <% tweet.images.each do |image| %>
+          <%= image_tag image ,class: 'images'   %>
+        <% end %>
          </div>
+
+         <p>
+          <%= link_to tweet.video_url.to_s do %>
+           <%= video_tag(tweet.video.to_s) %>
+          <% end %>
+          </p>
        
         <div class='item-info'>
           
@@ -123,9 +130,17 @@
 
         <%# <%= link_to  trip_path(trip.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag trip.image,  class: 'item-img' %>
-
+         <% trip.images.each do |image| %>
+          <%= image_tag image,  class: 'images' %>
+         <% end %>
          </div>
+
+         <p>
+          <%= link_to trip.video_url.to_s do %>
+           <%= video_tag(trip.video.to_s) %>
+          <% end %>
+          </p>
+       
        
         <div class='item-info'>
           
@@ -181,4 +196,4 @@
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   </a>
 </div>
-<%= render "shared/footer" %>
+<%# <%= render "shared/footer" %> 

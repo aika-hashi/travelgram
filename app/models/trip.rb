@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
 
   belongs_to_active_hash :area
   belongs_to_active_hash :crowd
@@ -9,5 +9,9 @@ class Trip < ApplicationRecord
   
 
   validates :area_id, numericality: { other_than: 1 }
-  validates :image,:local, :title, :price,:discount,:spot_text,presence: true
+  validates :images,:local, :title, :price,:spot_text,presence: true
+
+  #動画投稿機能
+  mount_uploader :video, VideoUploader
+
 end

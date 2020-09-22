@@ -20,6 +20,10 @@ class TweetsController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
   #   unless @tweet.valid?
   #     flash.now[:alert] = @tweet.errors.full_messages
   #     render :new and return
@@ -52,6 +56,6 @@ class TweetsController < ApplicationController
   private
  
   def tweet_params
-    params.require(:tweet).permit(:image,:price,:discount,:day_id,:area_id,:crowd_id,:title,:hotel_text,:corona_measure,:local,).merge(user_id: current_user.id)
+    params.require(:tweet).permit(:video,:price,:discount,:day_id,:area_id,:crowd_id,:title,:hotel_text,:corona_measure,:local, images: []).merge(user_id: current_user.id)
   end
 end

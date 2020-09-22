@@ -36,11 +36,23 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"travel-image" %>
+        <%= f.file_field :images, name: 'tweet[images][]', id:"travel-image" %>
         <div id="image-list"></div>
       </div>
     </div>
+
+    <% @tweet.images.each do |image| %>
+  <%= image_tag image, class: 'images' %>
+<% end %>
     <%# /宿の画像 %>
+
+<%# 宿の動画 %>
+
+    <div class="field">
+    <%= f.label :video %>
+    <%= f.file_field :video, :accept => 'video/*' %>
+</div>
+<%# /宿の動画 %>
          
    <%# 宿泊日数%>  
          <div class="weight-bold-text">
@@ -78,7 +90,7 @@
       <div>
         <div class="price-content">
           <div class="price-text">
-            <span>料金</span>
+            <span>料金(割引後)</span>
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
@@ -87,12 +99,11 @@
       </div>
     </div>
     <div class="weight-bold-text">
-          どのくらい得したか(Go Toトラベルなどによりどのくらい安くなったか)
-          <span class="indispensable">必須</span>
+          元値
         </div>
         <span class="sell-yen">¥</span>
         <%= f.text_area :discount, class:"hotel-area", id:"item-name", placeholder:"例）5000", maxlength:"40" %>
-        <span class="sell-yen">の得をした</span>
+        <span class="sell-yen"></span>
      <%# 宿の料金%>  
 
 

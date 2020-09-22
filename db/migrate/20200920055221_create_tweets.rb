@@ -1,7 +1,7 @@
 class CreateTweets < ActiveRecord::Migration[6.0]
   def change
     create_table :tweets do |t|
-      t.string :image        , null: false ,default: ""
+      t.string :images       , null: false ,default: ""
       t.string :price, null: false
       t.string :discount, null: false
       #t.references :user,null: false, foreign_key: true
@@ -12,6 +12,7 @@ class CreateTweets < ActiveRecord::Migration[6.0]
       t.text  :hotel_text, null: false
       t.text  :corona_measure, null: false
       t.string  :local, null: false
+      t.string :video
   
       t.references :user         , foreign_key: true   
 

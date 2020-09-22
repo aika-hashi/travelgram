@@ -1,7 +1,7 @@
 class CreateTrips < ActiveRecord::Migration[6.0]
   def change
     create_table :trips do |t|
-      t.string :image        , null: false ,default: ""
+      t.string :images     , null: false ,default: ""
       t.string :price, null: false
       t.string :discount, null: false
       #t.references :user,null: false, foreign_key: true
@@ -15,7 +15,8 @@ class CreateTrips < ActiveRecord::Migration[6.0]
       t.string  :fare, null: false
       t.string  :local, null: false
       t.references :user         , foreign_key: true   
-      t.references :tweet          , foreign_key: true  
+      t.string :video
+
       t.timestamps
     end
   end

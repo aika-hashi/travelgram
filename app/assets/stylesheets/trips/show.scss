@@ -12,6 +12,7 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
 }
 
 .sell-btn {
@@ -20,14 +21,18 @@ a {
   color: #fff;
   width: 100%;
   height: 100%;
-  font-size: 14px;
+  font-size: 30px;
   margin-bottom: 4vh;
+  
 }
 
 .back-btn {
   background: #aaa;
   border: 1px solid #aaa;
   color: #fff;
-  padding: 15px 35%;
   text-decoration: none;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  margin-bottom: 4vh;
 }

@@ -91,7 +91,7 @@ a {
 }
 
 .reason-list-number {
-  position: absolute;
+ 
   top: 0;
   left: 0;
   width: 60px;
@@ -220,7 +220,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-direction: column;
   height: calc(100vh - 100px - 90px);
   padding: 46px 40px 0;
 }
@@ -241,9 +240,11 @@ a {
 
 .item-lists {
   width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+  // flex-wrap: wrap; #折り返し
 }
 
 .item-lists>.list {
@@ -254,28 +255,15 @@ a {
 
 
 .item-img-content {
-  position: relative;
+  position: relative;right:200px
 }
 
-.item-img {
-  width: 33vh;
-  height: 33vh;
+.images {
+  width: 100vh;
+  height: 75vh;
 }
 
-.sold-out {
-  position: absolute;
-  top: 40%;
-  width: 100%;
-  text-align: center;
-  background-color: crimson;
-  transform: skewY(-10deg);
-}
 
-.sold-out>span {
-  color: #FFF;
-  font-size: 45px;
-  font: bold;
-}
 
 
 .item-info {
@@ -285,11 +273,11 @@ a {
 }
 
 .item-name {
-  font-size: 2.5vh;
+  font-size: 3vh;
 }
 
 .item-price {
-  font-size: 1.5vh;
+  font-size: 2vh;
   display: flex;
   justify-content: space-between;
 }
