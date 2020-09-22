@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
@@ -81,13 +82,13 @@
             <%= tweet.title %>
           </h3>
            <div class='item-name'>
-            <%= tweet.area_id %>
+            <%= tweet.area.name%>          <%= "宿泊施設"%>
           </div>
 
 
         <%# <%= link_to  tweet_path(tweet.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag tweet.image.variant(resize:'500x500'), class: 'item-img' if tweet.image.attached?  %>
+          <%= image_tag tweet.image ,class: 'item-img'   %>
 
          </div>
        
@@ -116,13 +117,13 @@
             <%= trip.title %>
           </h3>
            <div class='item-name'>
-            <%= trip.area.name %>
+            <%= trip.area.name %>  <%= "観光スポット"%>
           </div>
 
 
         <%# <%= link_to  trip_path(trip.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag trip.image.variant(resize:'500x500'), class: 'item-img' if trip.image.attached?%>
+          <%= image_tag trip.image,  class: 'item-img' %>
 
          </div>
        
