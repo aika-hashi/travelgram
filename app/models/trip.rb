@@ -2,6 +2,9 @@ class Trip < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_many_attached :images
+  has_many :trip_tag_relations
+  has_many :tags, through: :trip_tag_relations
+
 
   belongs_to_active_hash :area
   belongs_to_active_hash :crowd
