@@ -58,13 +58,13 @@
 </div>
 <%# /観光スポットの動画 %>
    
-    <%# 観光日数%>  
+    <%# 観光曜日%>  
          <div class="weight-bold-text">
-          観光日数
+          観光した曜日
          
         </div>
-        <%= f.collection_select(:day_id, Day.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-    <%# /観光日数%>  
+        <%= f.collection_select(:week_id, Week.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    <%# /観光曜日%>  
       
        <%# 観光スポットの場所%>  
  <div class="hotel-detail">

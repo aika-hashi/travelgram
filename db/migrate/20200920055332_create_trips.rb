@@ -6,7 +6,7 @@ class CreateTrips < ActiveRecord::Migration[6.0]
       t.string :discount, null: false
       #t.references :user,null: false, foreign_key: true
       t.integer :area_id, null: false
-      t.integer :day_id, null: false
+      t.integer :week_id, null: false
       t.integer :crowd_id, null: false
       t.string  :title, null: false
       t.text  :spot_text, null: false

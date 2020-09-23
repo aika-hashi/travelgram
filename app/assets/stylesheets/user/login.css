@@ -1,18 +1,51 @@
+.all-btn{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
 .login-btn {
   width: 50%;
   margin: 0 auto;
   margin-top: 50px;
 }
 
-.login-red-btn {
+.login-pink-btn {
   width: 100%;
-  background: #ea352d;
-  border: 1px solid #ea352d;
+  background: plum;
+  border: 1px solid plum;
   color: #fff;
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
 }
+
+ .sign-btn{
+
+  /* width: 50%; */
+  margin: 0 auto;
+ /* margin-top: 50px;  */
+
+} 
+
+.sign-up-btn{
+  width: 100%;
+  background: #aaa;
+  border: 1px solid  #aaa;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+
+}
+
+.forgot-btn{
+  font-size: 10px;
+  color: #aaa;
+}
+
 
 .login-flash-message {
   text-align: center;

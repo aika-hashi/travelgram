@@ -56,12 +56,19 @@
          
    <%# 宿泊日数%>  
          <div class="weight-bold-text">
-          観光日数
+          滞在日数
          
         </div>
         <%= f.collection_select(:day_id, Day.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
     <%# /宿泊日数%>  
       
+       <%# 宿泊曜日%>  
+         <div class="weight-bold-text">
+          宿泊開始の曜日
+         
+        </div>
+        <%= f.collection_select(:week_id, Week.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    <%# /宿泊曜日%>  
 
        <%# 宿の場所%>  
  <div class="hotel-detail">
