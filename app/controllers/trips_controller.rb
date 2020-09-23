@@ -1,11 +1,12 @@
 class TripsController < ApplicationController
   def index
-
+    @trips = Trip.all.order(created_at: :desc)
   end  
 
 
   def new
     @trip = Trip.new
+  
   end
 
   def create
@@ -16,16 +17,18 @@ class TripsController < ApplicationController
     else 
       render :new
     end
-
+  end
+  
+  
   def show
     
   end
       
 
-  end
+  private
 
   def trip_params
     params.require(:trip).permit(:video,:price,:discount,:area_id,:week_id,:crowd_id,:title,:spot_text,:corona_measure,:traffic,:fare,:local,  images: []).merge(user_id: current_user.id)
   end
-  private
+  
 end

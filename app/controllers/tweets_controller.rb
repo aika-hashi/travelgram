@@ -1,12 +1,21 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all.order("created_at DESC")
-    @trips = Trip.all.order("created_at DESC")
+    # @tweets = Tweet.all.order("created_at DESC")
+    # @trips = Trip.all.order("created_at DESC")
+
+    @search = Tweet.ransack(params[:q])
+    @tweet = @search.result(distinct: true).order("created_at DESC")
+
+
+    @searchs = Trip.ransack(params[:q])
+    @trip = @searchs.result(distinct: true).order("created_at DESC")
+
+    
   end
 
   def new
     @tweet = Tweet.new
-   
+
   end
   
   def create
@@ -58,4 +67,6 @@ class TweetsController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:video,:price,:discount,:day_id,:area_id,:week_id,:crowd_id,:title,:hotel_text,:corona_measure,:local, images: []).merge(user_id: current_user.id)
   end
+
+ 
 end

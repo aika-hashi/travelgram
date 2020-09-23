@@ -1,14 +1,39 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
+  
+  <%# 旅行検索%>
   <div class='search-bar-contents'>
     <%= link_to image_tag("plane2-logo.png", class:"furima-icon"), "/" %>
-    <form class="search-form" action="#">
+    
+    <%# 元からある検索欄%>
+    <%# <form class="search-form" action="#">
       <input class='input-box' placeholder='キーワードから探す'>
       <button class="search-button">
         <%= image_tag "search.png", class:"search-icon" %>
-      </button>
+       <%# </button>
     </form>
-  </div>
+  </div>  %> 
+  <%# /元からある検索欄%>
+
+  
+
+
+  
+  
+   <%# 追加した検索欄%>
+   <%# <h1>
+  旅行検索
+</h1>
+<%= search_form_for @p, url: products_search_path do |f| %>
+  <%# <%= f.label :name_eq, '商品名' %> 
+  <%# <%= f.collection_select :name_eq, @products, :name, :name,  include_blank: '指定なし' %>
+  <%# <br>
+  <%= f.submit '検索' %>
+<%# <% end %> 
+
+   <%# /追加した検索欄%>
+  <%# /旅行検索%>
+  
   <div class='nav'>
     <ul class='lists-left'>
       <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
