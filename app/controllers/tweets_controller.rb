@@ -1,10 +1,14 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all.order("created_at DESC")
-    @trips = Trip.all.order("created_at DESC")
+    # @tweets = Tweet.all.order("created_at DESC")
+    # @trips = Trip.all.order("created_at DESC")
 
     @search = Tweet.ransack(params[:q])
-    @tweet = @search.result(distinct: true)
+    @tweet = @search.result(distinct: true).order("created_at DESC")
+
+
+    @searchs = Trip.ransack(params[:q])
+    @trip = @searchs.result(distinct: true).order("created_at DESC")
 
   end
 
