@@ -187,6 +187,49 @@
   </div>
   <%# /投稿一覧 %>
 
+ 
+ <%# タグ付け後投稿一覧 %>
+
+<% if #タグ付けされたら %>   <%#tweetの%>
+<div class="header">
+  <div class="inner-header">
+    <h1 class="title">
+     TagTweet
+    </h1>
+    <li class='new-post'>
+      <%= link_to "New Post", new_tweet_path, class:"post-btn"%>
+    </li>
+  </div>
+</div>
+
+<div class="main">
+  <div class="message-wrap">
+  <%# ここからは上記の表示の仕方コピペ%>
+    <% @tweets.each do |tweet|%>
+      <div class="message">
+        <p class="text">
+          <%= tweet.message %>
+        </p>
+        <ul class="tag">
+          <li class="tag-list">
+            <%tweet.tags.each do |tag| %>
+              #<%=tag.name%>
+            <%end%>
+          </li>
+        </ul>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<%else%> <%#tripの%>
+<%end%>
+
+
+ <%# /タグ付け後投稿一覧 %>
+
+
+
 
 
 
