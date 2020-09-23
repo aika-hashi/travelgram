@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_055332) do
+ActiveRecord::Schema.define(version: 2020_09_23_030607) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 2020_09_20_055332) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trip_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_trip_tag_relations_on_tag_id"
+    t.index ["trip_id"], name: "index_trip_tag_relations_on_trip_id"
+  end
+
   create_table "trips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "images", default: "", null: false
     t.string "price", null: false
@@ -51,6 +66,15 @@ ActiveRecord::Schema.define(version: 2020_09_20_055332) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_trips_on_user_id"
+  end
+
+  create_table "tweet_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tweet_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_tweet_tag_relations_on_tag_id"
+    t.index ["tweet_id"], name: "index_tweet_tag_relations_on_tweet_id"
   end
 
   create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,6 +116,10 @@ ActiveRecord::Schema.define(version: 2020_09_20_055332) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "trip_tag_relations", "tags"
+  add_foreign_key "trip_tag_relations", "trips"
   add_foreign_key "trips", "users"
+  add_foreign_key "tweet_tag_relations", "tags"
+  add_foreign_key "tweet_tag_relations", "tweets"
   add_foreign_key "tweets", "users"
 end

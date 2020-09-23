@@ -188,9 +188,7 @@
   <%# /投稿一覧 %>
 
  
- <%# タグ付け後投稿一覧 %>
-
-<% if #タグ付けされたら %>   <%#tweetの%>
+ <%# tag=message%>
 <div class="header">
   <div class="inner-header">
     <h1 class="title">
@@ -204,7 +202,11 @@
 
 <div class="main">
   <div class="message-wrap">
-  <%# ここからは上記の表示の仕方コピペ%>
+  
+  
+  <%# タグ付け後投稿一覧 %>
+  <%# ここからは上記の表示の仕方コピペする%>
+  <% if #タグ付けされたら %>   <%#tweetの%>
     <% @tweets.each do |tweet|%>
       <div class="message">
         <p class="text">
