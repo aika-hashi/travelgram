@@ -67,11 +67,21 @@
 <%# 検索%>
 
 
-<%# 宿泊施設検索欄%>
+<%# 宿泊施設・観光スポット検索欄%>
 <span class= 'search-btn'>検索</span>
 <%= search_form_for @search do |f| %>
-  <%= f.label :title_cont, '宿泊施設名' %>
+  <%= f.label :title_cont, '宿泊施設・観光スポット名' %>
   <%= f.search_field :title_cont %>
+
+
+
+
+<%=f.label :area_id_eq,'都道府県'%>
+<%= f.collection_select :area_id_eq, Area.all,:id,:name, include_blank: '指定なし' %>
+  
+  
+
+
 
  <%= f.label :local_cont, '場所' %>
   <%= f.search_field :local_cont %>
@@ -85,35 +95,14 @@
   <%= f.radio_button :price_lteq, '7500' %>7500円以下
   <%= f.radio_button :price_lteq, '10000' %>10000円以下
 
+<%= f.submit '検索' %>
 
-  <%= f.submit '検索' %>
 <% end %>
-
-<%# /宿泊施設検索欄%>
-
-<%# 観光スポット検索欄%>
-<span class= 'search-btn'>検索</span>
-<%= search_form_for @searchs do |f| %>
-  <%= f.label :title_cont, '観光スポット名' %>
-  <%= f.search_field :title_cont %>
-
- <%= f.label :local_cont, '場所' %>
-  <%= f.search_field :local_cont %>
-
   
-  
-  
-  <%= f.label :price %>
-  <%= f.radio_button :price_lteq, '' %>指定なし
-  <%= f.radio_button :price_lteq, '5000' %>5000円以下
-  <%= f.radio_button :price_lteq, '7500' %>7500円以下
-  <%= f.radio_button :price_lteq, '10000' %>10000円以下
+
+<%# /宿泊施設・観光スポット検索欄%>
 
 
-  <%= f.submit '検索' %>
-<% end %>
-
-<%# /観光スポット検索欄%>
 
 
  
