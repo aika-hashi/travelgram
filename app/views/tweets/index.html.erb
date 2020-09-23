@@ -64,7 +64,54 @@
   </div>
   <%# /FURIMAが選ばれる3つの理由部分 %>
 
+<%# 検索%>
+
+
+<%# 追加した検索欄%>
+<span class= 'search-btn'>検索</span>
+<%= search_form_for @search do |f| %>
+  <%= f.label :title_cont, '宿泊施設・観光スポット名' %>
+  <%= f.search_field :title_cont %>
+
+ <%= f.label :local_cont, '場所' %>
+  <%= f.search_field :local_cont %>
+
   
+  
+  
+  <%= f.label :price %>
+  <%= f.radio_button :price_lteq, '' %>指定なし
+  <%= f.radio_button :price_lteq, '5000' %>5000円以下
+  <%= f.radio_button :price_lteq, '7500' %>7500円以下
+  <%= f.radio_button :price_lteq, '10000' %>10000円以下
+
+
+  <%= f.submit '検索' %>
+<% end %>
+
+<%# /追加した検索欄%>
+  <table>
+  <thead>
+    <tr>
+      <th><%= sort_link(@search, :title) -%></th>
+      <th><%= sort_link(@search, :local) -%></th> 
+      
+      <th><%= sort_link(@search, :price) -%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tweet.each do |tweet| %>
+    <tr>
+      <td><%= tweet.title -%></td>
+      <td><%= tweet.local -%></td>
+      
+      <td><%= tweet.price -%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
  
 <%# 投稿一覧 %>
   <%# 宿泊施設投稿一覧 %>
@@ -188,49 +235,6 @@
   <%# /投稿一覧 %>
 
  
- <%# tag=message%>
-<div class="header">
-  <div class="inner-header">
-    <h1 class="title">
-     TagTweet
-    </h1>
-    <li class='new-post'>
-      <%= link_to "New Post", new_tweet_path, class:"post-btn"%>
-    </li>
-  </div>
-</div>
-
-<div class="main">
-  <div class="message-wrap">
-  
-  
-  <%# タグ付け後投稿一覧 %>
-  <%# ここからは上記の表示の仕方コピペする%>
-  <% if #タグ付けされたら %>   <%#tweetの%>
-    <% @tweets.each do |tweet|%>
-      <div class="message">
-        <p class="text">
-          <%= tweet.message %>
-        </p>
-        <ul class="tag">
-          <li class="tag-list">
-            <%tweet.tags.each do |tag| %>
-              #<%=tag.name%>
-            <%end%>
-          </li>
-        </ul>
-      </div>
-    <%end%>
-  </div>
-</div>
-
-<%else%> <%#tripの%>
-<%end%>
-
-
- <%# /タグ付け後投稿一覧 %>
-
-
 
 
 
