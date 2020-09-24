@@ -9,8 +9,9 @@ class TweetsController < ApplicationController
 
     @searchs = Trip.ransack(params[:q])
     @trip = @searchs.result(distinct: true).order("created_at DESC")
-
     
+    # @user = User.find(params[:id])
+  
   end
 
   def new
@@ -30,6 +31,7 @@ class TweetsController < ApplicationController
   end
 
   def show
+    
     
   end
 

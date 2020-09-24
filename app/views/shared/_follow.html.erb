@@ -1,0 +1,14 @@
+ <%  if user_signed_in? && current_user.id %>
+    <%= link_to 'プロフィールの編集',  '#', method: :get, class: "item-red-btn" %>
+    <p class='or-text'>or</p>
+    <%= link_to 'ログアウト', '#', method: :delete, class:'item-destroy' %>
+    <%= link_to '削除', '#', method: :delete, class:'item-destroy' %>
+  
+  
+    
+    <% else %>
+    <%= link_to 'フォローする',  '#',class:"item-red-btn"%>
+    <% end %>
+
+    <%#フォローしていたら%>
+    <%# <%= link_to 'フォロー中',  item_orders_path(@item),class:"item-red-btn"%> 
