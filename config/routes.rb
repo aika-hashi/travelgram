@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'tweets/search'
   resources :tweets
   resources :trips
-
+  resources :users
   # get 'spot', to: 'tweets#new_spot'
   #   post 'spot', to: 'tweets#create_spot'
 end

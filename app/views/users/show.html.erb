@@ -1,0 +1,23 @@
+<%= render "shared/username" %>
+<%= render "shared/follow" %>
+<%= render "shared/hightlight" %>
+
+
+ 
+        <div class='my-img'>
+
+<div class='my-img-content'>
+        <% @tweets.each do |tweet| %>
+        <% tweet.images.each do |image| %>
+          <%= image_tag image ,class: 'myimages'   %>
+        <% end %>
+         <% end %>
+         </div>
+         <div class='my-img-content'>
+         <% @trips.each do |trip| %>
+        <% trip.images.each do |image| %>
+          <%= image_tag image ,class: 'myimages'   %>
+        <% end %>
+         <% end %>
+         </div>
+          </div>
