@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'bookmarks/create'
+  get 'bookmarks/destroy'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
@@ -13,4 +15,14 @@ Rails.application.routes.draw do
   resources :users
   # get 'spot', to: 'tweets#new_spot'
   #   post 'spot', to: 'tweets#create_spot'
+
+  resources :tweets, shallow: true do
+    resource :bookmarks, only: %i[create destroy]
+    get :bookmarks, on: :collection
+  end
+
+  resources :trips, shallow: true do
+    resource :bookmarks, only: %i[create destroy]
+    get :bookmarks, on: :collection
+  end
 end

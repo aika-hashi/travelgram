@@ -36,9 +36,13 @@ ActiveRecord::Schema.define(version: 2020_09_26_032033) do
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tweet_id", null: false
+    t.bigint "trip_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_bookmarks_on_trip_id"
     t.index ["tweet_id"], name: "index_bookmarks_on_tweet_id"
+    t.index ["user_id", "trip_id"], name: "index_bookmarks_on_user_id_and_trip_id", unique: true
+    t.index ["user_id", "tweet_id"], name: "index_bookmarks_on_user_id_and_tweet_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
@@ -101,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_032033) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarks", "trips"
   add_foreign_key "bookmarks", "tweets"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "trips", "users"
