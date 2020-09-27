@@ -16,13 +16,13 @@ Rails.application.routes.draw do
   # get 'spot', to: 'tweets#new_spot'
   #   post 'spot', to: 'tweets#create_spot'
 
-  resources :tweets, shallow: true do
-    resource :bookmarks, only: %i[create destroy]
-    get :bookmarks, on: :collection
-  end
+  # resources :tweets, shallow: true do
+  #   resource :bookmarks, only: %i[create destroy]
+  #   get :bookmarks, on: :collection
+  # end
 
-  resources :trips, shallow: true do
-    resource :bookmarks, only: %i[create destroy]
-    get :bookmarks, on: :collection
-  end
+  # resources :trips, shallow: true do
+  #   resource :bookmarks, only: %i[create destroy]
+  #   get :bookmarks, on: :collection
+  # end
 end

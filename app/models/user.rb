@@ -7,12 +7,15 @@ class User < ApplicationRecord
          has_many :tweets
          has_one_attached :image
          has_many :tweets, dependent: :destroy
-         has_many :bookmarks, dependent: :destroy
-         has_many :bookmark_tweets, through: :bookmarks, source: :tweet
          has_many :trips, dependent: :destroy
          has_many :bookmarks, dependent: :destroy
+         has_many :bookmark_tweets, through: :bookmarks, source: :tweet
          has_many :bookmark_trips, through: :bookmarks, source: :trip
        
+
+         def own_board?(tweet)
+          self.id == tweet.user_id
+        end
 
          validates :nickname,:email,:password,:password_confirmation,:firstname, :familyname, :firstname_kana, :familyname_kana, :date,presence: true
 
