@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all.order(created_at: :desc)
+    # @trips = Trip.all.order(created_at: :desc)
+    @trips = Trip.all.includes(:user)
   end  
 
 
@@ -22,6 +23,7 @@ class TripsController < ApplicationController
   
   def show
     @trip = Trip.find(params[:id])
+    @trips = Trip.all.includes(:user)
   end
       
 
@@ -44,6 +46,10 @@ class TripsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def bookmarks
+    @trips = current_user.bookmark_boards.includes(:user).recent
+end
 
   private
 

@@ -4,6 +4,10 @@ class Tweet < ApplicationRecord
   has_many_attached :images
   has_many :bookmarks, dependent: :destroy
 
+  def bookmark_by?(user)
+    bookmarks.where(user_id: user.id).exists?
+  end
+
   
   
   belongs_to_active_hash :area

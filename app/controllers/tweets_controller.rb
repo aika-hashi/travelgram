@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     @trip = @searchs.result(distinct: true).order("created_at DESC")
     
 
-    # @tweets = Tweet.all.includes(:user)
+    @tweets = Tweet.all.includes(:user)
     # @trips = Trip.all.includes(:user)
     #  @user = User.find(params[:id])
   
@@ -35,6 +35,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @tweets = Tweet.all.includes(:user)
     # @trip = Trip.find(params[:id])
   end
 
@@ -59,10 +60,9 @@ class TweetsController < ApplicationController
     end
   end
 
-#   def bookmarks
-#     @tweets = current_user.bookmark_boards.includes(:user).recent
-#     @trips = current_user.bookmark_boards.includes(:user).recent
-# end
+  def bookmarks
+    @tweets = current_user.bookmark_boards.includes(:user).recent
+end
 
   #   unless @tweet.valid?
   #     flash.now[:alert] = @tweet.errors.full_messages

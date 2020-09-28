@@ -19,7 +19,7 @@
     <h2 class="name">
       <%= @tweet.title %>
     </h2>
-      <div class='item-img-content'>
+      <div class='travel-img-content'>
       <% @tweet.images.each do |image| %>
       <%= image_tag image ,class:"item-box-img" %>
       <%end%>
@@ -61,19 +61,30 @@
           <th class="detail-item">宿のコロナ対策</th>
           <td class="detail-value"><%= @tweet.corona_measure%></td>
         </tr>
+        <tr>
+          <% if @tweet.bookmark_by?(current_user) %>
+      <td><%= link_to "ブックマークを外す", tweet_bookmarks_path(@tweet), method: :delete %></td>
+    <% else %>
+      <td><%= link_to "ブックマーク", tweet_bookmarks_path(@tweet), method: :post %></td>
+    <% end %>
+        </tr>
       </tbody>
     </table>
-    <div class="option">
+   
+   <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+        <span>お気に入り </span>
       </div>easure
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
         <span>不適切な商品の通報</span>
       </div>
     </div>
-  
+<%#お気に入り%>
+
+   
+
   <%#宿泊施設%>
 
   

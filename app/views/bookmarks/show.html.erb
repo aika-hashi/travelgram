@@ -1,0 +1,47 @@
+<table>
+  <caption>ブックマーク一覧</caption>
+  <thead>
+    <tr>
+      <th>投稿者名</th>
+      <th>タイトル</th>
+      <th>本文</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookmark.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.tweet.user.name %></td>
+        <td>
+          <%= link_to tweet_path(bookmark.tweet) do %>
+            <%= bookmark.tweet.hotel_title %>
+          <% end %>
+        </td>
+        <td><%= bookmark.tweet.images %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <caption>ブックマーク一覧</caption>
+  <thead>
+    <tr>
+      <th>投稿者名</th>
+      <th>タイトル</th>
+      <th>本文</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookmark.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.trip.user.name %></td>
+        <td>
+          <%= link_to trip_path(bookmark.trip) do %>
+            <%= bookmark.trip.post_title %>
+          <% end %>
+        </td>
+        <td><%= bookmark.trip.images %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

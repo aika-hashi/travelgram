@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(version: 2020_09_26_032033) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trip_id"], name: "index_bookmarks_on_trip_id"
     t.index ["tweet_id"], name: "index_bookmarks_on_tweet_id"
-    t.index ["user_id", "trip_id"], name: "index_bookmarks_on_user_id_and_trip_id", unique: true
-    t.index ["user_id", "tweet_id"], name: "index_bookmarks_on_user_id_and_tweet_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 

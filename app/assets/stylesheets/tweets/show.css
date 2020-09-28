@@ -9,6 +9,10 @@
   padding: 5vh 0;
 }
 
+.travel-img-content{
+  
+}
+
 .item-box {
   background-color: #FFF;
   width: 70vw;
@@ -29,7 +33,7 @@
   height: 50vh;
   width: 60vw;
   min-height: 500px;
-  background-color: rgb(205, 202, 202);
+  /* background-color: rgb(205, 202, 202); */
   object-fit: contain;
 }
 
