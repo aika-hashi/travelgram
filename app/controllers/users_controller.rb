@@ -8,6 +8,8 @@ def index
   @tweet = Tweet.find(params[:id])
   @trip = Trip.find(params[:id])
   
+  
+  
 end
 
 def show
@@ -24,6 +26,8 @@ def show
   # end    
 
 end
+
+
 
 end
 

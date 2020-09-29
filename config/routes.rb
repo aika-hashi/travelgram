@@ -13,8 +13,17 @@ Rails.application.routes.draw do
   resources :tweets
   resources :trips
   resources :users
+  resources :relationships
+  resources :bookmarks
   # get 'spot', to: 'tweets#new_spot'
   #   post 'spot', to: 'tweets#create_spot'
+  
+    resource :users do
+    resource :relationships, only: [:create, :destroy, :show,]
+  end
+
+
+ 
 
   resources :tweets do
     resource :bookmarks
@@ -23,4 +32,7 @@ Rails.application.routes.draw do
   resources :trips do
     resource :bookmark_trips
   end
+  
+ 
+
 end

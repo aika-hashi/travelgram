@@ -1,3 +1,10 @@
+ 
+   <ul class='lists-right'>
+       <li><%= link_to current_user.image, user_path(current_user.id), class: "user-image"  %></li>
+       <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname"  %></li>
+       <li><%= link_to "フォロワー",  users_relationships_path, class: "user-nickname"  %></li>
+       <li><%= link_to "フォロー中",   users_relationships_path, class: "user-nickname"  %></li>
+ 
  <%  if user_signed_in? && current_user.id %>
     <%= link_to 'プロフィールの編集',  '#', method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
@@ -6,9 +13,15 @@
   
   
     
-    <% else %>
-    <%= link_to 'フォローする',  '#',class:"item-red-btn"%>
-    <% end %>
+    
 
-    <%#フォローしていたら%>
-    <%# <%= link_to 'フォロー中',  item_orders_path(@item),class:"item-red-btn"%> 
+    <%else user_signed_in? && current_user.id != @user.id%>
+
+    
+  <% if current_user.following?(@user) %>
+    <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete %>
+  <% else %>
+    <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST %>
+  <% end %>
+<% end %>
+

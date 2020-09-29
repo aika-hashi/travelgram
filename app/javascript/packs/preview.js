@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function(){
   // ファイル選択ボタンを生成
   const inputHTML = document.createElement('input') 
   inputHTML.setAttribute('id', `travel-image_${imageElementNum}`)
-  inputHTML.setAttribute('name', 'tweet[images][]')
-  inputHTML.setAttribute('name', 'trip[images][]')
+  inputHTML.setAttribute('name', 'tweet[images][]' == 'trip[images][]')
+  // inputHTML.setAttribute('name', 'trip[images][]')
   inputHTML.setAttribute('type', 'file')
+
+  
    
   // 生成したHTMLの要素をブラウザに表示させる
    imageElement.appendChild(blobImage)

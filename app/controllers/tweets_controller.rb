@@ -51,6 +51,16 @@ class TweetsController < ApplicationController
     else
       render :edit
     end
+   
+    respond_to do |format|
+      if @article.update(article_params) && @article.video.recreate_versions!
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

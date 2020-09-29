@@ -65,6 +65,18 @@ end
 
 gem "aws-sdk-s3", require: false
 gem 'rmagick'
-gem 'carrierwave'
+
+#画像加工
+gem 'carrierwave'#←画像アップロード
 gem 'mini_magick'
+#検索
 gem 'ransack', github: 'activerecord-hackery/ransack'
+
+#動画
+gem "twitter-bootstrap-rails"
+gem "less-rails"
+gem 'therubyracer'
+
+gem 'streamio-ffmpeg'
+
+gem "jquery-rails"
