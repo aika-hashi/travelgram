@@ -36,6 +36,8 @@ class TweetsController < ApplicationController
   def show
     @tweet = Tweet.find(params[:id])
     @tweets = Tweet.all.includes(:user)
+    @comment = Comment.new
+    @comments = @tweet.comments.includes(:user)
     # @trip = Trip.find(params[:id])
   end
 

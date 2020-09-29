@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_many :bookmark_trips, dependent: :destroy
+  has_many :trip_comments  # commentsテーブルとのアソシエーション
 
   
   def bookmark_by?(user)

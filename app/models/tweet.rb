@@ -3,6 +3,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_many :bookmarks, dependent: :destroy
+  has_many :comments  # commentsテーブルとのアソシエーション
 
   def bookmark_by?(user)
     bookmarks.where(user_id: user.id).exists?

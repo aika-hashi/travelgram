@@ -16,6 +16,8 @@ class User < ApplicationRecord
         has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
         has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
+        has_many :comments  # commentsテーブルとのアソシエーション
+        has_many :trip_comments  # trip_commentsテーブルとのアソシエーション
         # ユーザーをフォローする、後ほどcontrollerで使用します。
   def follow(user_id)
     follower.create(followed_id: user_id)

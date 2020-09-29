@@ -33,6 +33,13 @@ Rails.application.routes.draw do
     resource :bookmark_trips
   end
   
+  resources :tweets do
+    resources :comments, only: :create
+  end
+
+  resources :trips do
+    resources :trip_comments, only: :create
+  end
  
 
 end
