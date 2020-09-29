@@ -1,23 +1,27 @@
 <table>
-  <caption>ブックマーク一覧</caption>
-  <thead>
+  <caption>観光スポットお気に入り一覧</caption>
+  <%# <thead>
     <tr>
       <th>投稿者名</th>
       <th>タイトル</th>
       <th>本文</th>
     </tr>
-  </thead>
+  </thead> %>
   <tbody>
     <% @bookmark.each do |bookmark| %>
       <tr>
-        <td><%= bookmark.trip.user.name %></td>
+        <td><%= bookmark.trip.user.nickname %></td>
         <td>
           <%= link_to trip_path(bookmark.trip) do %>
-            <%= bookmark.trip.post_title %>
+            <%= bookmark.trip.title %>
           <% end %>
         </td>
         <td><%= bookmark.trip.images %></td>
+        <td><%=link_to 'もどる', user_path(current_user.id), class:"back-btn" %></td>
       </tr>
     <% end %>
+    
+        
   </tbody>
 </table>
+

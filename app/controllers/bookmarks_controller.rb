@@ -31,7 +31,7 @@ class BookmarksController < ApplicationController
   end
 
   def show
-   
+    @bookmark = Bookmark.all.order("created_at DESC")
   end
 
 end

@@ -63,9 +63,9 @@
         </tr>
         <tr>
           <% if @tweet.bookmark_by?(current_user) %>
-      <td><%= link_to "ブックマークを外す", tweet_bookmarks_path(@tweet), method: :delete %></td>
+      <td><%= link_to "お気に入りを外す", tweet_bookmarks_path(@tweet), method: :delete %></td>
     <% else %>
-      <td><%= link_to "ブックマーク",tweet_bookmarks_path(@tweet), method: :post %></td>
+      <td><%= link_to "お気に入り",tweet_bookmarks_path(@tweet), method: :post %></td>
     <% end %>
         </tr>
       </tbody>
