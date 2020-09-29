@@ -2,11 +2,11 @@ class Trip < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_many_attached :images
-  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_trips, dependent: :destroy
 
   
   def bookmark_by?(user)
-    bookmarks.where(user_id: user.id).exists?
+    bookmark_trips.where(user_id: user.id).exists?
   end
 
 

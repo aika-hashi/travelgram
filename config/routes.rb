@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :trips do
-    resource :bookmarks
+    resource :bookmark_trips
   end
 end
