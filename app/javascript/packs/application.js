@@ -9,8 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 require('./preview')  // 追記する
 
-//= require jquery #追加
-//= require jquery_ujs #追加
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

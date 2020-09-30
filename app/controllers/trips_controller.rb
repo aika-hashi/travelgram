@@ -25,7 +25,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trips = Trip.all.includes(:user)
     @comment = TripComment.new
-    @comments = @trip.comments.includes(:user)
+    @comments = @trip.trip_comments.includes(:user)
   end
       
 

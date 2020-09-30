@@ -21,6 +21,6 @@ class Trip < ApplicationRecord
   # validates :video, :presence => true
 
   #動画投稿機能
-  mount_uploader :video, VideoUploader
+  # mount_uploader :video, VideoUploader
 
 end

@@ -11,9 +11,9 @@
     <ul class='lists-right'>
       <%# <% if user_signed_in? && current_user.id == @user.id%> <!-- ユーザーがログインしているか調べる -->
   <!-- ユーザーがログインしていた時の処理 -->
-    <% if user_signed_in? %>
-       <li><%= link_to current_user.image, user_path(current_user.id), class: "user-image"  %></li>
-       <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname"  %></li>
+    <% if  %>
+       <li><%= link_to @tweet.user.image, user_path(current_user.id), class: "user-image"  %></li>
+       <li><%= link_to @tweet.user.nickname, user_path(current_user.id), class: "user-nickname"  %></li>
        <li><%= link_to 'ログアウト',destroy_user_session_path , method: :delete, class: "logout"  %></li>
      <% else %>
       <li><%= link_to 'ログイン', new_user_session_path , class: "login" %></li>

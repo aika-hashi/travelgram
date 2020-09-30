@@ -40,6 +40,13 @@ Rails.application.routes.draw do
   resources :trips do
     resources :trip_comments, only: :create
   end
- 
+  
+  resources :tweets do
+    resources :users
+  end
+
+  resources :trips do
+    resources :users
+  end
 
 end

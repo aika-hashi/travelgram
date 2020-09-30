@@ -16,8 +16,8 @@ def show
   @tweets = Tweet.all.order("created_at DESC")
   @trips = Trip.all.order("created_at DESC")
 
-  # @tweet = Tweet.find(params[:id])
-  # @trip = Trip.find(params[:id])
+  @tweet = Tweet.find(params[:id])
+  @trip = Trip.find(params[:id])
   
   #  if user_signed_in? 
   #   redirect_to user_path(current_user.id)

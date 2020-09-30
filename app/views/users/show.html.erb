@@ -9,12 +9,12 @@
 <div class='my-img-content'>
 
         <% @tweets.each do |tweet| %>
-        <% if tweet.user_id == current_user.id   %>
+        <% if tweet.user_id == @tweet.user.id  %>
         <% tweet.images.each do |image| %>
           
           <%= link_to image_tag(image), tweet_path(tweet.id),class:'myimages'    %>
         <% end %>
-         <% end %>
+          <% end %> 
          <% end %>
          
          </div>
@@ -22,11 +22,12 @@
          <div class='my-img-content'>
          
          <% @trips.each do |trip| %>
-         <% if trip.user_id == current_user.id   %>
+         <% if trip.user_id == @trip.user.id  %>
         <% trip.images.each do |image| %>
           <%= link_to image_tag(image), trip_path(trip.id),class:'myimages'    %>
         <% end %>
-         <% end %>
+          <% end %> 
          <% end %>
          </div>
           </div>
+          
