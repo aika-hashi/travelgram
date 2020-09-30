@@ -18,7 +18,7 @@ class Tweet < ApplicationRecord
 
   validates :area_id, numericality: { other_than: 1 }
   validates :images, :local, :title, :price,:hotel_text,presence: true
-  validates :video, :presence => true
+  # validates :video, :presence => true
 
   #動画投稿機能
   mount_uploader :video, VideoUploader
