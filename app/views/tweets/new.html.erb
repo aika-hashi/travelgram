@@ -51,8 +51,8 @@
     <div class="field">
     <%= f.label :video %>
     <%= f.file_field :video, :accept => 'video/*' %>
-</div>
-<%# /宿の動画 %>
+    </div> 
+
          
    <%# 宿泊日数%>  
          <div class="weight-bold-text">
@@ -123,7 +123,7 @@
         </div>
         <%= f.collection_select(:crowd_id, Crowd.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
-          コロナ対策 
+          宿のコロナ対策 
         </div>
         <%= f.text_area :corona_measure, class:"hotel-area", id:"item-name", placeholder:" 宿でなされていたコロナ対策について（必須 40文字まで)", maxlength:"40" %>
       </div>

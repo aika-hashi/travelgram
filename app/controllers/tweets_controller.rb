@@ -9,8 +9,12 @@ class TweetsController < ApplicationController
 
     @searchs = Trip.ransack(params[:q])
     @trip = @searchs.result(distinct: true).order("created_at DESC")
-
     
+
+    @tweets = Tweet.all.includes(:user)
+    # @trips = Trip.all.includes(:user)
+    #  @user = User.find(params[:id])
+  
   end
 
   def new
@@ -30,8 +34,47 @@ class TweetsController < ApplicationController
   end
 
   def show
-    
+    @tweet = Tweet.find(params[:id])
+    @tweets = Tweet.all.includes(:user)
+    @comment = Comment.new
+    @comments = @tweet.comments.includes(:user)
+    # @trip = Trip.find(params[:id])
   end
+
+  def edit
+    @tweet = Tweet.find(params[:id])
+
+  end
+
+  def update
+    @tweet = Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+      redirect_to tweet_path(@tweet)
+    else
+      render :edit
+    end
+   
+    respond_to do |format|
+      if @article.update(article_params) && @article.video.recreate_versions!
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    if @tweet.destroy
+      redirect_to root_path
+    end
+  end
+
+  def bookmarks
+    @tweets = current_user.bookmark_boards.includes(:user).recent
+end
 
   #   unless @tweet.valid?
   #     flash.now[:alert] = @tweet.errors.full_messages

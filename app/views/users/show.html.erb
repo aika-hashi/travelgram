@@ -1,0 +1,32 @@
+<%= render "shared/username" %>
+<%= render "shared/follow" %>
+<%= render "shared/hightlight" %>
+
+
+ 
+        <div class='my-img'>
+
+<div class='my-img-content'>
+
+        <% @tweets.each do |tweet| %>
+        <% if tweet.user_id == current_user.id   %>
+        <% tweet.images.each do |image| %>
+          
+          <%= link_to image_tag(image), tweet_path(tweet.id),class:'myimages'    %>
+        <% end %>
+         <% end %>
+         <% end %>
+         
+         </div>
+         
+         <div class='my-img-content'>
+         
+         <% @trips.each do |trip| %>
+         <% if trip.user_id == current_user.id   %>
+        <% trip.images.each do |image| %>
+          <%= link_to image_tag(image), trip_path(trip.id),class:'myimages'    %>
+        <% end %>
+         <% end %>
+         <% end %>
+         </div>
+          </div>

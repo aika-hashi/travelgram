@@ -1,0 +1,28 @@
+<table>
+  <caption>宿泊施設お気に入り一覧</caption>
+  <div>
+  <tbody>
+  
+    <% @bookmark.each do |bookmark| %>
+      <tr>
+        <td><%= bookmark.tweet.user.nickname %></td>
+        <td>
+          <%= link_to tweet_path(bookmark.tweet) do %>
+            <%= bookmark.tweet.title %>
+          <% end %>
+        </td>
+        <td><%= bookmark.tweet.images %></td>
+      <td><%=link_to 'もどる', user_path(current_user.id), class:"back-btn" %></td>
+      
+      </tr>
+
+
+       
+    <% end %>
+    
+  </tbody>
+</table>
+ 
+
+
+
