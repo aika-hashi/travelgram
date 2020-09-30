@@ -21,6 +21,27 @@ class TripsController < ApplicationController
   
   
   def show
+<<<<<<< Updated upstream
+=======
+    @trip = Trip.find(params[:id])
+    @trips = Trip.all.includes(:user)
+    @comment = TripComment.new
+    @comments = @trip.trip_comments.includes(:user)
+  end
+      
+
+  def edit
+    @trip = Trip.find(params[:id])
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      redirect_to trip_path(@trip)
+    else
+      render :edit
+    end
+>>>>>>> Stashed changes
     
   end
       
